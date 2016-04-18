@@ -1,5 +1,6 @@
-from aio_pybars.loader import FSTemplateLoader
+from .loader import FSTemplateLoader
+from .render import render, AIOBarsResponse
 
 
-async def setup(app):
-    app['loader'] = FSTemplateLoader(app['config']['TEMPLATES_DIR'])
+async def setup(app, Loader=FSTemplateLoader):
+    app['loader'] = Loader(app, app['config']['TEMPLATES_DIR'])
