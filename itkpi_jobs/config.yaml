@@ -1,0 +1,2 @@
+ASSETS_DIR: !BaseDir theme/assets
+TEMPLATES_DIR: !BaseDir theme
