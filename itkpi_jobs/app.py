@@ -5,6 +5,7 @@ from aiohttp.web import Application
 
 import aio_pybars
 import aio_yamlconfig
+from itkpi_jobs.config import CONFIG_TRAFARET
 from itkpi_jobs.template_utils import AppFSTemplateLoader
 from itkpi_jobs.views import Index
 
@@ -17,9 +18,11 @@ def build_application():
 
     loop.run_until_complete(aio_yamlconfig.setup(app,
                                                  config_files=[CONFIG_FILE],
+                                                 trafaret_validator=CONFIG_TRAFARET,
                                                  base_dir=os.path.dirname(__file__)))
 
     loop.run_until_complete(aio_pybars.setup(app,
+                                             templates_dir=app.config['TEMPLATES_DIR'],
                                              Loader=AppFSTemplateLoader))
 
     app.router.add_route('*', r'/', Index.index)

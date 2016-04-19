@@ -1,7 +1,6 @@
-from aiohttp.web_reqrep import Response
 from aiohttp.web_urldispatcher import View
 
-from aio_pybars import render, AIOBarsResponse
+from aio_pybars import AIOBarsResponse
 
 
 class Index(View):
